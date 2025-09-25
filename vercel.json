@@ -1,7 +1,7 @@
 {
-  "functions": {
-    "api/generate-twist.ts": {
-      "runtime": "nodejs20.x"
+    "functions": {
+        "api/generate-twist.ts": {
+            "runtime": "nodejs20.x"
+        }
     }
-  }
 }
