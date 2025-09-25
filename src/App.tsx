@@ -7,6 +7,7 @@ import { PromptDisplay } from "./components/PromptGenerator/PromptDisplay";
 
 const characterList = [
   "Um astronauta medroso",
+  "Uma raposa de meia",
   "Um cavaleiro feito de queijo",
   "Uma lula que é chef de cozinha",
   "Um robô jardineiro",
