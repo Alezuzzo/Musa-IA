@@ -1,4 +1,3 @@
-// src/components/Header/index.tsx
 export function Header() {
   return (
     <header>
