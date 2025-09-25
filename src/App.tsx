@@ -20,8 +20,6 @@ const scenarioList = [
 
 function App() {
   // Dados "falsos" por enquanto
-  const mockCharacter = "Cavaleiro Coruja";
-  const mockScenario = "Uma cidade feita de doces";
   const [character, setCharacter] = useState<string>("");
   const [scenario, setScenario] = useState<string>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
