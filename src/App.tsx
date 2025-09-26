@@ -1,3 +1,5 @@
+// DENTRO DE: /src/App.tsx
+
 import { useState } from 'react';
 import { Header } from './components/Header';
 import { PromptDisplay } from './components/PromptGenerator/PromptDisplay';
@@ -14,11 +16,10 @@ function App() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-
   const handleGenerateClick = async () => {
     setIsLoading(true);
     setError(null);
-    setCreativeTwist(''); 
+    setCreativeTwist('');
 
     const randomCharacter = characterList[Math.floor(Math.random() * characterList.length)];
     const randomScenario = scenarioList[Math.floor(Math.random() * scenarioList.length)];
@@ -26,19 +27,20 @@ function App() {
     setScenario(randomScenario);
 
     try {
+      // Fazendo a chamada de REDE para a nossa API
       const response = await fetch('/api/generate-twist', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ character: randomCharacter, scenario: randomScenario }),
       });
 
       if (!response.ok) {
-        throw new Error('A Musa-IA está com dor de cabeça. Tente novamente.');
+        throw new Error("A Musa-IA está com dor de cabeça. Tente novamente mais tarde.");
       }
-      
-      const data = await response.json();
-      
 
+      const data = await response.json();
       setCreativeTwist(data.twist);
 
     } catch (err: unknown) {
@@ -54,13 +56,11 @@ function App() {
   };
 
   const handleCopyClick = () => {
-    if (!character) return; 
-    
+    if (!character) return;
     const fullPrompt = `Personagem: ${character}\nCenário: ${scenario}\nTwist: ${creativeTwist}`;
     navigator.clipboard.writeText(fullPrompt);
     alert("Ideia copiada para a área de transferência!");
   };
-
 
   return (
     <main className="app-container">
